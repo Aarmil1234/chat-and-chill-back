@@ -41,11 +41,6 @@ io.on("connection", (socket) => {
         }
     });
 
-    // Example server-side code
-io.in(room).emit("user_status", {
-    users: Array.from(usersInRoom[room]), // assuming usersInRoom[room] is a Set of usernames
-  });
-  
     socket.on("send_message", ({ room, message, sender, replyTo }) => {
         io.to(room).emit("receive_message", { message, sender, replyTo });
     });
